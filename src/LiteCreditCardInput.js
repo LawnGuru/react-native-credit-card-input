@@ -86,6 +86,7 @@ export default class LiteCreditCardInput extends Component {
       number: "1234 5678 1234 5678",
       expiry: "MM/YY",
       cvc: "CVC",
+      postalCode: "ZIPCODE"
     },
     validColor: "",
     invalidColor: "red",
@@ -113,7 +114,7 @@ export default class LiteCreditCardInput extends Component {
       inputStyle, validColor, invalidColor, placeholderColor,
       placeholders, values, status,
       onFocus, onChange, onBecomeEmpty, onBecomeValid,
-      additionalInputsProps,
+      additionalInputsProps
     } = this.props;
 
     return {
@@ -139,7 +140,7 @@ export default class LiteCreditCardInput extends Component {
   }
 
   render() {
-    const { focused, values: { number }, inputStyle, status: { number: numberStatus } } = this.props;
+    const { focused, values: { number }, inputStyle, status: { number: numberStatus }, requiresPostalCode } = this.props;
     const showRightPart = focused && focused !== "number";
 
     return (
@@ -175,6 +176,10 @@ export default class LiteCreditCardInput extends Component {
           <CCInput {...this._inputProps("cvc")}
             keyboardType="numeric"
             containerStyle={s.cvcInput} />
+          { requiresPostalCode &&
+            <CCInput {...this._inputProps("postalCode")}
+              keyboardType="numeric"
+              containerStyle={s.cvcInput} /> }
         </View>
       </View>
     );
