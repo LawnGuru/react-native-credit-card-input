@@ -50,14 +50,19 @@ const s = StyleSheet.create({
     width: INFINITE_WIDTH,
   },
   expiryInput: {
-    width: 80,
+    width: 60
   },
   cvcInput: {
     width: 80,
+    paddingLeft: 15
+  },
+  zipInput: {
+    width: 80
   },
   last4Input: {
-    width: 60,
-    marginLeft: 20,
+    width: 40,
+    marginLeft: 10,
+    marginRight: 25
   },
   input: {
     height: 40,
@@ -179,7 +184,7 @@ export default class LiteCreditCardInput extends Component {
           { requiresPostalCode &&
             <CCInput {...this._inputProps("postalCode")}
               keyboardType="numeric"
-              containerStyle={s.cvcInput} /> }
+              containerStyle={s.zipInput} /> }
         </View>
       </View>
     );
